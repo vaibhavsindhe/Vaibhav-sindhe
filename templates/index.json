@@ -14,7 +14,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -29,33 +29,32 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +62,83 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "hotspot_KYegTD": {
+      "type": "hotspot",
+      "blocks": {
+        "hotspot_block_LY98Hn": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "black-leather-bag",
+            "hotspot_icon_position_top": 100,
+            "hotspot_icon_position_left": 100
+          }
+        },
+        "hotspot_block_NKgRKX": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "blue-silk-tuxedo",
+            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_left": 50
+          }
+        },
+        "hotspot_block_wWGjiH": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "chequered-red-shirt",
+            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_left": 50
+          }
+        },
+        "hotspot_block_WaFNGp": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "classic-leather-jacket",
+            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_left": 50
+          }
+        },
+        "hotspot_block_RAJcE4": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "classic-varsity-top",
+            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_left": 50
+          }
+        },
+        "hotspot_block_UFrjU7": {
+          "type": "hotspot-block",
+          "settings": {
+            "hotspot_product": "dark-denim-top",
+            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_left": 50
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_block_LY98Hn",
+        "hotspot_block_NKgRKX",
+        "hotspot_block_wWGjiH",
+        "hotspot_block_WaFNGp",
+        "hotspot_block_RAJcE4",
+        "hotspot_block_UFrjU7"
+      ],
+      "name": "Product Hotspot",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 36,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "hotspot_KYegTD"
   ]
 }

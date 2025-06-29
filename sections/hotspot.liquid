@@ -1,0 +1,146 @@
+{%- style -%}
+  .padding-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  {% for block in section.blocks %}
+    .hotspot-icon.icon-{{ block.id }} {
+      top:{{ block.settings.hotspot_icon_position_top }}%;
+      left:{{ block.settings.hotspot_icon_position_left }}%;
+    }
+  {% endfor %}
+
+  @media screen and (min-width: 750px) {
+    .padding-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{{ 'product-hotspot.css' | asset_url | stylesheet_tag }}
+{% comment %} delete this {% endcomment %}
+{% assign product = '' %}
+{% comment %} delete this {% endcomment %}
+<section class="padding-{{ section.id }} page-width">
+  <div class="hotspot-wrapper">
+    {%- for block in section.blocks -%}
+      {% comment %} delete this {% endcomment %}
+      {% if forloop.index == 2 %}
+        {% assign product = block.settings.hotspot_product %}
+      {% endif %}
+      {% comment %} delete this {% endcomment %}
+      {% assign hotspot_image = block.settings.hotspot_product.featured_image %}
+      {% if block.settings.hotspot_image != blank %}
+        {% assign hotspot_image = block.settings.featured_image %}
+      {% endif %}
+      <div class="hotspot-block">
+        <img class="hotspot-image" src="{{ hotspot_image | image_url }}">
+        <span class="hotspot-icon icon-{{ block.id }}">
+          {% render 'hotspot-icon' %}
+        </span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+<div class="hotspot-card-popup-overlay">
+  <div class="hotspot-card-popup">{% render 'hotspot-product-card', product: product %}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Hotspot",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding top (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding bottom (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot-block",
+      "name": "Hotspot Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "hotspot_product",
+          "label": "Hotspot product"
+        },
+        {
+          "type": "image_picker",
+          "id": "hotspot_image",
+          "label": "Hotspot Image"
+        },
+        {
+          "type": "header",
+          "content": "Hotspot Icon Position"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_icon_position_top",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position From Top",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_icon_position_left",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position From Left",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Hotspot"
+    }
+  ]
+}
+{% endschema %}
