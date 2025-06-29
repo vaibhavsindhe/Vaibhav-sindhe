@@ -110,6 +110,7 @@
       ],
       "name": "Product Hotspot",
       "settings": {
+        "heading": "Tisso vison in the wild",
         "auto_add_product": "dark-winter-jacket",
         "padding_top": 36,
         "padding_bottom": 36,
