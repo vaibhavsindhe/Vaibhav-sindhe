@@ -15,9 +15,10 @@
   }
 {%- endstyle -%}
 
-{% if section.settings.annoucement_text != blank %}
+{% if section.settings.annoucement_text != blank and section.settings.annoucement_text_mobile != blank  %}
   <section class="announcement-text-section padding-{{ section.id }}">
-    <div class="announcement-text">{{ section.settings.annoucement_text }}</div>
+    <div class="announcement-text small-hide">{{ section.settings.annoucement_text }}</div>
+    <div class="announcement-text large-up-hide medium-hide">{{ section.settings.annoucement_text_mobile }}</div>
   </section>
 {% endif %}
 {% schema %}
@@ -30,6 +31,12 @@
       "type": "text",
       "id": "annoucement_text",
       "label": "Announcement Text",
+      "default":"Announcement Text"
+    },
+    {
+      "type": "text",
+      "id": "annoucement_text_mobile",
+      "label": "Announcement Text For mobile",
       "default":"Announcement Text"
     },
     {
