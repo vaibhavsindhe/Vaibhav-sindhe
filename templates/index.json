@@ -48,34 +48,6 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "hotspot_kWdyCi": {
       "type": "hotspot",
       "blocks": {
@@ -83,8 +55,8 @@
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "black-leather-bag",
-            "hotspot_icon_position_top": 100,
-            "hotspot_icon_position_left": 100
+            "hotspot_icon_position_top": 54,
+            "hotspot_icon_position_left": 61
           }
         },
         "hotspot_block_iBNytG": {
@@ -92,30 +64,30 @@
           "settings": {
             "hotspot_product": "blue-silk-tuxedo",
             "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_left": 83
           }
         },
         "hotspot_block_KeJP9q": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "chequered-red-shirt",
-            "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_top": 13,
+            "hotspot_icon_position_left": 59
           }
         },
         "hotspot_block_3zziWY": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "classic-leather-jacket",
-            "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_top": 11,
+            "hotspot_icon_position_left": 77
           }
         },
         "hotspot_block_M68Xzh": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "classic-varsity-top",
-            "hotspot_icon_position_top": 50,
+            "hotspot_icon_position_top": 28,
             "hotspot_icon_position_left": 50
           }
         },
@@ -123,8 +95,8 @@
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "dark-denim-top",
-            "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_top": 38,
+            "hotspot_icon_position_left": 75
           }
         }
       },
@@ -148,7 +120,6 @@
   },
   "order": [
     "image_banner",
-    "featured_collection",
     "hotspot_kWdyCi"
   ]
 }
