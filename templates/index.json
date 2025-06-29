@@ -1,51 +1,35 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+    "image_text_aHHjCw": {
+      "type": "image-text",
+      "name": "Image Text",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "banner_image": "shopify:\/\/shop_images\/Frame_1.png",
+        "heading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "mobile_hide": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "image_text_cxyGwa": {
+      "type": "image-text",
+      "name": "Image Text",
+      "settings": {
+        "banner_image": "shopify:\/\/shop_images\/Frame.png",
+        "heading": "The Gift Guide",
+        "description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.<\/p>",
+        "button_label": "Shop Now",
+        "button_link": "#",
+        "mobile_hide": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
       }
     },
     "hotspot_kWdyCi": {
@@ -110,7 +94,7 @@
       ],
       "name": "Product Hotspot",
       "settings": {
-        "heading": "Tisso vison in the wild",
+        "heading": "",
         "auto_add_product": "dark-winter-jacket",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -120,7 +104,8 @@
     }
   },
   "order": [
-    "image_banner",
+    "image_text_aHHjCw",
+    "image_text_cxyGwa",
     "hotspot_kWdyCi"
   ]
 }
