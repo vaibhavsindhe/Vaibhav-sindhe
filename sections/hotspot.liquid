@@ -18,6 +18,7 @@
   }
 {%- endstyle -%}
 {{ 'product-hotspot.css' | asset_url | stylesheet_tag }}
+
 <section class="padding-{{ section.id }} page-width">
   <hotspot-section data-auto-variant-id="{{ section.settings.auto_add_product.selected_or_first_available_variant.id }}">
     {% if section.settings.heading != blank %}

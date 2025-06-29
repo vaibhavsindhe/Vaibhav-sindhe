@@ -1330,3 +1330,22 @@ class CartPerformance {
     );
   }
 }
+document.addEventListener("DOMContentLoaded", function() {
+  let hamburger = document.querySelector(".icon-header-hamburger");
+  let headerCloseButton = document.querySelector(".icon-header-cross");
+  let headerDropDown = document.querySelector(".custom-header");
+
+  if (hamburger && headerCloseButton && headerCloseButton) {
+    hamburger.addEventListener("click",()=>{
+      headerDropDown.classList.toggle("open");
+      hamburger.classList.add("hidden");
+      headerCloseButton.classList.remove("hidden");
+    });
+
+    headerCloseButton.addEventListener("click",()=>{
+      headerDropDown.classList.toggle("open");
+      hamburger.classList.remove("hidden");
+      headerCloseButton.classList.add("hidden");
+    });
+  }
+});
