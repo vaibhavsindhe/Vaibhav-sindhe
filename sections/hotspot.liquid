@@ -20,6 +20,10 @@
 {{ 'product-hotspot.css' | asset_url | stylesheet_tag }}
 <section class="padding-{{ section.id }} page-width">
   <hotspot-section data-auto-variant-id="{{ section.settings.auto_add_product.selected_or_first_available_variant.id }}">
+    {% if section.settings.heading != blank %}
+      <div class="hotspot-section-heading">{{ section.settings.heading }}</div>
+    {% endif %}
+    <div></div>
     <div class="hotspot-wrapper">
       {%- for block in section.blocks -%}
         {% assign hotspot_image = block.settings.hotspot_product.featured_image %}
@@ -54,6 +58,11 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+    },
     {
       "type": "product",
       "id": "auto_add_product",

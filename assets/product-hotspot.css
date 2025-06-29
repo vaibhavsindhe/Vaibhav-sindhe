@@ -3,6 +3,15 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
+.hotspot-section-heading {
+  font-family: var(--body-family);
+  font-weight: 400;
+  font-size: 3.6rem;
+  line-height: 120%;
+  vertical-align: middle;
+  margin-bottom: 3rem;
+  color: #000;
+}
 .hotspot-block {
   position: relative;
 }
@@ -53,37 +62,37 @@
 }
 .hotspot-product-card .hpc_product-info {
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .hotspot-product-card .hpc_product-title {
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 300;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 120%;
   color: #000;
-  margin-top: 13px;
+  margin-top: 1.3rem;
 }
 .hotspot-product-card .hpc_product-price {
-  font-family: Lustria;
+  font-family: var(--body-family);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 120%;
   color: #000;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 .hotspot-product-card .hpc_product-description {
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 300;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 110%;
   color: #000;
-  margin-top: 12px;
+  margin-top: 1.2rem;
 }
 .hpc_product-variant legend {
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 130%;
   color: #333333;
   margin-top: 1rem;
@@ -99,9 +108,9 @@
   border: 1px solid #000;
   padding: 1.1rem 1.5rem;
   position: relative;
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 100%;
   text-transform: capitalize;
   color: #000;
@@ -158,9 +167,9 @@
   justify-content: space-between;
   padding: 1.1rem;
   border: 1px solid #000;
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 100%;
   text-transform: capitalize;
   color: #000;
@@ -207,15 +216,15 @@
   visibility: visible;
 }
 .hotspot-product-card .hpc_atc-button {
-  font-family: Jost;
+  font-family: var(--heading-family);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 20.48px;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
   background: #000;
-  padding: 12px 0;
+  padding: 1.2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
