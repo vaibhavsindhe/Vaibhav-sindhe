@@ -1,0 +1,62 @@
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+.custom-header-section .header-text {
+  font-family: var(--heading-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 13.42px;
+  text-align: center;
+  color: #000;
+}
+.custom-header-section .header-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2.3rem 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.custom-header-section .header-button {
+  font-family: var(--heading-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 20.48px;
+  letter-spacing: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  padding: 1.1rem 2rem 1.1rem 4rem;
+}
+.custom-header-section .header-button svg path {
+  stroke: #000;
+  fill: #000;
+}
+@media screen and (max-width: 749px) {
+  .custom-header {
+    display: none;
+    flex-direction: column;
+    padding: 2.5rem;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+  .custom-header.open {
+    display: flex;
+  }
+  .custom-header-section .icon-header-hamburger,
+  .custom-header-section .icon-header-cross {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 1.6rem;
+  }
+  .custom-header-section .header-mobile span {
+    display: flex;
+    align-items: center;
+  }
+}

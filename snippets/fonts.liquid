@@ -1,0 +1,42 @@
+{%- style -%}
+  @font-face {
+    font-family: "jost";
+    font-style: Light;
+    font-weight: 300;
+    font-display: swap;
+    src: url("{{'Jost-Light.ttf' | asset_url }}");
+  }
+  @font-face {
+    font-family: "jost";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("{{'Jost-Regular.ttf' | asset_url }}");
+  }
+  @font-face {
+    font-family: "jost";
+    font-style: bold;
+    font-weight: 500;
+    font-display: swap;
+    src: url("{{'Jost-Bold.ttf' | asset_url }}");
+  }
+  @font-face {
+    font-family: "Lustria";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("{{'Lustria-Regular.ttf' | asset_url }}");
+  }
+
+
+  :root {
+    --heading-family: {{ 'jost'}};
+    --body-family: {{ 'Lustria' }};
+  }
+  h1 {
+    font-family: var(--heading-family);
+  }
+  p {
+    font-family: var(--body-family);
+  }
+{%- endstyle -%}

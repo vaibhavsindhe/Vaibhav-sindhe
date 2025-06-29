@@ -3595,3 +3595,16 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.announcement-text-section .announcement-text {
+  font-family: var(--heading-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13.42px;
+  text-align: center;
+}
+@media screen and (max-width:749px) {
+  .announcement-text-section .announcement-text {
+    font-size: 1.4rem;
+  }
+}
