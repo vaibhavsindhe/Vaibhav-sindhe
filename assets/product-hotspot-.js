@@ -136,7 +136,7 @@ class CustomVariantSelector extends HTMLElement {
       }
     ];
 
-    if (this.addAutoVariantId && this.this.autoVariantId) {
+    if (this.addAutoVariantId && this.autoVariantId) {
       items.push({
         id: this.autoVariantId,
         quantity: 1
