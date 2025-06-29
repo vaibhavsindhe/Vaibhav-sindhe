@@ -189,7 +189,6 @@
   align-items: center;
   padding: 0;
   border-top: none;
-  border-bottom: none;
   position: absolute;
   background: #fff;
   cursor: pointer;
@@ -198,7 +197,6 @@
   width: 100%;
   padding: 0.5rem 0;
   padding: 0.8rem;
-  border-bottom: 1px solid #000;
   transition: all ease-in-out 0.3s;
 }
 .hotspot-product-card .hpc_size-variant .variant-options label:hover {

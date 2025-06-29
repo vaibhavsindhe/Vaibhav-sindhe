@@ -80,7 +80,7 @@ class CustomVariantSelector extends HTMLElement {
     const selectedOption1 = this.querySelector('input[name="option1"]:checked')?.value;
     const selectedOption2 = this.querySelector('input[name="option2"]:checked')?.value;
 
-    if (selectedOption1 == "M" && selectedOption2 == "White") {
+    if (selectedOption1 == "M" && selectedOption2 == "Black") {
       this.addAutoVariantId = true;
     }
 
