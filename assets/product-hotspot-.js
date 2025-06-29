@@ -136,7 +136,7 @@ class CustomVariantSelector extends HTMLElement {
       }
     ];
 
-    if (this.addAutoVariantId) {
+    if (this.addAutoVariantId && this.this.autoVariantId) {
       items.push({
         id: this.autoVariantId,
         quantity: 1
@@ -184,7 +184,6 @@ class CustomVariantSelector extends HTMLElement {
       pointerEvents: 'none',
     });
 
-    // Needed to make highlight appear below labels
     this.colorVariantContainer.style.position = 'relative';
   }
 
