@@ -18,34 +18,36 @@
   }
 {%- endstyle -%}
 {{ 'product-hotspot.css' | asset_url | stylesheet_tag }}
-{% comment %} delete this {% endcomment %}
-{% assign product = '' %}
-{% comment %} delete this {% endcomment %}
 <section class="padding-{{ section.id }} page-width">
-  <div class="hotspot-wrapper">
-    {%- for block in section.blocks -%}
-      {% comment %} delete this {% endcomment %}
-      {% if forloop.index == 2 %}
-        {% assign product = block.settings.hotspot_product %}
-      {% endif %}
-      {% comment %} delete this {% endcomment %}
-      {% assign hotspot_image = block.settings.hotspot_product.featured_image %}
-      {% if block.settings.hotspot_image != blank %}
-        {% assign hotspot_image = block.settings.featured_image %}
-      {% endif %}
-      <div class="hotspot-block">
-        <img class="hotspot-image" src="{{ hotspot_image | image_url }}">
-        <span class="hotspot-icon icon-{{ block.id }}">
-          {% render 'hotspot-icon' %}
-        </span>
+  <hotspot-section data-auto-variant-id="{{ section.settings.auto_add_product.selected_or_first_available_variant.id }}">
+    <div class="hotspot-wrapper">
+      {%- for block in section.blocks -%}
+        {% assign hotspot_image = block.settings.hotspot_product.featured_image %}
+        {% if block.settings.hotspot_image != blank %}
+          {% assign hotspot_image = block.settings.featured_image %}
+        {% endif %}
+        <div class="hotspot-block">
+          <img class="hotspot-image" src="{{ hotspot_image | image_url }}">
+          <span
+            class="hotspot-icon icon-{{ block.id }}"
+            data-product-handle="{{ block.settings.hotspot_product.handle }}"
+          >
+            {% render 'hotspot-icon' %}
+          </span>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="hotspot-card-popup-overlay hidden">
+      <div class="hotspot-card-popup">
+        <div class="hotspot-card-popup-content">
+          <div class="icon-loader">{% render 'icon-loader' %}</div>
+        </div>
+        <div class="hotspot-card-popup-close">{% render 'icon-cross' %}</div>
       </div>
-    {%- endfor -%}
-  </div>
+    </div>
+  </hotspot-section>
 </section>
-<div class="hotspot-card-popup-overlay">
-  <div class="hotspot-card-popup">{% render 'hotspot-product-card', product: product %}</div>
-</div>
-
+<script src="{{ 'product-hotspot-.js' | asset_url}}" defer></script>
 {% schema %}
 {
   "name": "Product Hotspot",
@@ -53,8 +55,14 @@
   "class": "section",
   "settings": [
     {
+      "type": "product",
+      "id": "auto_add_product",
+      "label": "Auto add Product ",
+      "info": "The mentioned product will be auto added when products Of Black and Medium variants are added to cart"
+    },
+    {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Padding Settings"
     },
     {
       "type": "range",

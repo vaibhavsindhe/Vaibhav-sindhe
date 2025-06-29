@@ -8,6 +8,7 @@
 }
 .hotspot-icon {
   position: absolute;
+  cursor: pointer;
 }
 .hotspot-block .hotspot-image,
 .hotspot-product-card .hpc_product-image img {
@@ -31,9 +32,25 @@
 .hotspot-card-popup {
   background: #fff;
   width: 25%;
-  padding: 17px;
+  padding: 2.5rem 2rem;
+  position: relative;
 }
-
+.hotspot-card-popup-close {
+  display: inline-flex;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  cursor: pointer;
+}
+.hotspot-card-popup .icon-loader {
+  min-height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hotspot-card-popup .icon-loader .loading__spinner {
+  width: 12%;
+}
 .hotspot-product-card .hpc_product-info {
   display: flex;
   gap: 8px;
@@ -62,4 +79,159 @@
   line-height: 110%;
   color: #000;
   margin-top: 12px;
+}
+.hpc_product-variant legend {
+  font-family: Jost;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: #333333;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.hotspot-product-card .hpc_color-variant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hotspot-product-card .hpc_color-variant label {
+  width: 100%;
+  border: 1px solid #000;
+  padding: 1.1rem 1.5rem;
+  position: relative;
+  font-family: Jost;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  text-transform: capitalize;
+  color: #000;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+.hotspot-product-card .hpc_color-variant .variant-highlight + label {
+  border-right: 0;
+}
+.hotspot-product-card .hpc_color-variant label.active {
+  color: #fff;
+  z-index: 1;
+}
+.hotspot-product-card .hpc_color-variant label .color-swatch {
+  display: block;
+  height: 100%;
+  width: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-right: 1px solid #000;
+}
+.hpc_color-variant .variant-highlight {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: black;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+.hotspot-product-card .hpc_size-variant {
+  position: relative;
+}
+.hotspot-product-card .hpc_size-variant .selected-size .selected-size-icon {
+  border-left: 1px solid #000;
+}
+.hotspot-product-card .hpc_size-variant .selected-size .selected-size-icon svg {
+  transition: all ease-in-out 0.3s;
+}
+.hotspot-product-card
+  .hpc_size-variant[open]
+  .selected-size
+  .selected-size-icon
+  svg {
+  transform: rotate(180deg);
+}
+.hotspot-product-card .hpc_size-variant .selected-size,
+.hotspot-product-card .hpc_size-variant .variant-options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem;
+  border: 1px solid #000;
+  font-family: Jost;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  text-transform: capitalize;
+  color: #000;
+  transition: all ease-in-out 0.3s;
+}
+.hotspot-product-card .hpc_size-variant .selected-size {
+  padding: 0;
+}
+.hotspot-product-card .hpc_size-variant .selected-size .selected-size-text,
+.hotspot-product-card .hpc_size-variant .selected-size .selected-size-icon {
+  padding: 1.1rem;
+}
+.hotspot-product-card .hpc_size-variant .variant-options {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border-top: none;
+  border-bottom: none;
+  position: absolute;
+  background: #fff;
+  cursor: pointer;
+}
+.hotspot-product-card .hpc_size-variant .variant-options label {
+  width: 100%;
+  padding: 0.5rem 0;
+  padding: 0.8rem;
+  border-bottom: 1px solid #000;
+  transition: all ease-in-out 0.3s;
+}
+.hotspot-product-card .hpc_size-variant .variant-options label:hover {
+  color: #fff;
+  background: #000;
+}
+.hotspot-product-card .hpc_atc-error-message {
+  margin-top: 2.2rem;
+  transition: all ease-in-out 0.2s;
+  color: red;
+  text-align: center;
+  visibility: hidden;
+}
+.hotspot-product-card .hpc_atc-error-message.show {
+  visibility: visible;
+}
+.hotspot-product-card .hpc_atc-button {
+  font-family: Jost;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20.48px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.8rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 749px) {
+  .hotspot-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  .hotspot-card-popup {
+    width: 80%;
+  }
+  .hotspot-product-card .hpc_product-description {
+    font-size: 1.2rem;
+  }
 }
