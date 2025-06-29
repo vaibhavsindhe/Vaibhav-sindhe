@@ -76,10 +76,10 @@
         "padding_bottom": 36
       }
     },
-    "hotspot_KYegTD": {
+    "hotspot_kWdyCi": {
       "type": "hotspot",
       "blocks": {
-        "hotspot_block_LY98Hn": {
+        "hotspot_block_bHMfAA": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "black-leather-bag",
@@ -87,7 +87,7 @@
             "hotspot_icon_position_left": 100
           }
         },
-        "hotspot_block_NKgRKX": {
+        "hotspot_block_iBNytG": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "blue-silk-tuxedo",
@@ -95,7 +95,7 @@
             "hotspot_icon_position_left": 50
           }
         },
-        "hotspot_block_wWGjiH": {
+        "hotspot_block_KeJP9q": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "chequered-red-shirt",
@@ -103,7 +103,7 @@
             "hotspot_icon_position_left": 50
           }
         },
-        "hotspot_block_WaFNGp": {
+        "hotspot_block_3zziWY": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "classic-leather-jacket",
@@ -111,7 +111,7 @@
             "hotspot_icon_position_left": 50
           }
         },
-        "hotspot_block_RAJcE4": {
+        "hotspot_block_M68Xzh": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "classic-varsity-top",
@@ -119,7 +119,7 @@
             "hotspot_icon_position_left": 50
           }
         },
-        "hotspot_block_UFrjU7": {
+        "hotspot_block_hkkHBK": {
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "dark-denim-top",
@@ -129,12 +129,12 @@
         }
       },
       "block_order": [
-        "hotspot_block_LY98Hn",
-        "hotspot_block_NKgRKX",
-        "hotspot_block_wWGjiH",
-        "hotspot_block_WaFNGp",
-        "hotspot_block_RAJcE4",
-        "hotspot_block_UFrjU7"
+        "hotspot_block_bHMfAA",
+        "hotspot_block_iBNytG",
+        "hotspot_block_KeJP9q",
+        "hotspot_block_3zziWY",
+        "hotspot_block_M68Xzh",
+        "hotspot_block_hkkHBK"
       ],
       "name": "Product Hotspot",
       "settings": {
@@ -149,6 +149,6 @@
   "order": [
     "image_banner",
     "featured_collection",
-    "hotspot_KYegTD"
+    "hotspot_kWdyCi"
   ]
 }
