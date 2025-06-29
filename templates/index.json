@@ -95,8 +95,8 @@
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "dark-denim-top",
-            "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_top": 38,
+            "hotspot_icon_position_left": 75
           }
         }
       },
