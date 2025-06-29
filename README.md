@@ -3,6 +3,9 @@
 ### 🔗 Live Preview
 [**vaibhav-sindhe-48-teststore.myshopify.com**](https://vaibhav-sindhe-48-teststore.myshopify.com/)
 
+### 🔐 Store Preview Password
+**vaibhavsindhe123**
+
 ### 📂 GitHub Repository
 - Repo: [Vaibhav-sindhe](https://github.com/vaibhavsindhe/Vaibhav-sindhe)
 - PR: [Pull Request #1](https://github.com/vaibhavsindhe/Vaibhav-sindhe/pull/1)
