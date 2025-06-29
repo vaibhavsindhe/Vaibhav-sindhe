@@ -79,8 +79,8 @@
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "classic-leather-jacket",
-            "hotspot_icon_position_top": 50,
-            "hotspot_icon_position_left": 50
+            "hotspot_icon_position_top": 11,
+            "hotspot_icon_position_left": 77
           }
         },
         "hotspot_block_M68Xzh": {
