@@ -11,6 +11,7 @@ class HotspotSection extends HTMLElement {
     this.hotspots.forEach((hotspot) => {
       hotspot.addEventListener("click", () => {
         this.showPopup();
+        document.body.style.overflow = "hidden";
         this.showProduct(hotspot.getAttribute("data-product-handle"));
       })
     })
@@ -19,6 +20,7 @@ class HotspotSection extends HTMLElement {
     this.popup.classList.remove("hidden");
     this.popup.querySelector(".hotspot-card-popup-close").addEventListener("click", () => {
       this.popup.classList.add("hidden");
+      document.body.style.overflow = "auto";
       this.popupContent.innerHTML = '';
       this.popupContent.appendChild(this.popupLoader);
     })
