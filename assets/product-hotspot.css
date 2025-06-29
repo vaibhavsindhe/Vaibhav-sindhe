@@ -192,6 +192,10 @@
   position: absolute;
   background: #fff;
   cursor: pointer;
+  max-height: 10rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
 }
 .hotspot-product-card .hpc_size-variant .variant-options label {
   width: 100%;

@@ -54,12 +54,13 @@
           {% assign values = '' %}
           {% for variant in product.variants %}
             {% assign value = variant.options[option_index] %}
-            {% unless values contains value %}
+             {% assign tag = ',' | append: value | append: ',' %}
+            {% unless values contains tag %}
               <label>
                 <input type="radio" name="option1" value="{{ value }}" class="hidden">
                 <span>{{ value }}</span>
               </label>
-              {% assign values = values | append: value | append: ',' %}
+              {% assign values = values | append: tag %}
             {% endunless %}
           {% endfor %}
         </div>
