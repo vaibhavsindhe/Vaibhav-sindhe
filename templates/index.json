@@ -55,8 +55,8 @@
           "type": "hotspot-block",
           "settings": {
             "hotspot_product": "black-leather-bag",
-            "hotspot_icon_position_top": 100,
-            "hotspot_icon_position_left": 100
+            "hotspot_icon_position_top": 54,
+            "hotspot_icon_position_left": 54
           }
         },
         "hotspot_block_iBNytG": {
