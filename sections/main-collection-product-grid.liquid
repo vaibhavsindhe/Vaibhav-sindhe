@@ -125,7 +125,7 @@
         {% endif %}
       >
         {%- if collection.products.size == 0 -%}
-          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}" data-product-grid>
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
               <h2 class="title title--primary">
@@ -141,6 +141,7 @@
         {%- else -%}
           <div
             class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            data-product-grid
           >
             <div class="loading-overlay gradient"></div>
             <ul
@@ -182,9 +183,18 @@
               {%- endfor -%}
             </ul>
 
+          {% if section.settings.enable_infinite_scroll %}
+            <infinite-scroll style="display: flex; justify-content: center;">
+              {%- if paginate.next -%}
+              <a style="color: currentColor; text-decoration: none; pointer-events: none; margin-top: 30px;"
+                href="{{ paginate.next.url }}&section_id={{ section.id }}"></a>
+              {%- endif -%}
+            </infinite-scroll>
+          {% else %}
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
             {%- endif -%}
+          {% endif %}
           </div>
         {%- endif -%}
       </div>
@@ -195,6 +205,10 @@
   {%- endif -%}
 </div>
 
+{% comment %} {% if section.settings.enable_infinite_scroll %} {% endcomment %}
+  <script src="{{ 'infinite-scroll.js' | asset_url }}" type="module"></script>
+{% comment %} {% endif %} {% endcomment %}
+
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",
@@ -203,10 +217,10 @@
     {
       "type": "range",
       "id": "products_per_page",
-      "min": 8,
-      "max": 36,
-      "step": 4,
-      "default": 16,
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "default": 20,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
     {
@@ -217,6 +231,13 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "default": true,
+      "label": "Enable infinite scroll",
+      "info": "Enable infinite scroll for the collection page"
     },
     {
       "type": "select",
