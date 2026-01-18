@@ -128,21 +128,21 @@
             {% if card_product.tags contains 'featured' %}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--top-left"
+                class="badge badge--top-left  color-{{ settings.sale_badge_color_scheme }}"
               >
                 Featured
               </span>
             {%- elsif card_product.available == false -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                class="badge badge--bottom-left hidden color-{{ settings.sold_out_badge_color_scheme }}"
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }} hidden"
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>

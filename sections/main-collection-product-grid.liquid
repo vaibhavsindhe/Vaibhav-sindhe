@@ -34,6 +34,31 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  [data-featured-fullscreen="true"][data-featured-state="loading"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  [data-featured-state="loading"] ul#product-grid {
+    display: none !important;
+  }
+  [data-featured-state="loading"] infinite-scroll {
+    display: none !important;
+  }
+  [data-featured-state="loading"] [data-featured-loading] {
+    display: flex;
+  }
+  [data-featured-state="ready"] [data-featured-loading] {
+    display: none;
+  }
+  [data-featured-loading] {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    font-weight: 600;
+  }
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
@@ -142,8 +167,11 @@
           <div
             class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
             data-product-grid
+            data-collection-handle="{{ collection.handle }}"
+            data-featured-state="loading"
           >
             <div class="loading-overlay gradient"></div>
+            <div data-featured-loading>Loading...</div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"
@@ -161,6 +189,8 @@
                 {%- endif -%}
                 <li
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  data-product-handle="{{ product.handle }}"
+                  data-product-id="{{ product.id }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"
