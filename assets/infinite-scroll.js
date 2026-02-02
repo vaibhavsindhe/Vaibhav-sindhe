@@ -64,11 +64,20 @@ export class InfiniteScroll extends HTMLElement {
 
         Array.from(newGrid.children).forEach((child) => {
           const handle = (child?.dataset?.productHandle || "").toLowerCase();
-          const isFeatured = Boolean(featuredHandles && handle && featuredHandles.has(handle));
+          const badge = child?.querySelector?.(".card__badge.top .badge");
+          const badgeText = (badge?.textContent || "").trim().toLowerCase();
+          const isFeaturedByBadge = badgeText === "featured";
+          const isFeaturedByHandle = Boolean(featuredHandles && handle && featuredHandles.has(handle));
+          const isFeatured = isFeaturedByHandle || isFeaturedByBadge;
 
           if (isFeatured) {
-            if (renderedFeaturedHandles && renderedFeaturedHandles.has(handle)) return;
+            // If we prefetched+inserted all featured upfront, drop featured items from later pages to avoid duplicates.
             if (allFeaturedPrefetched) return;
+
+            // Ensure badge-detected featured products are tracked too.
+            if (isFeaturedByBadge && featuredHandles && handle) featuredHandles.add(handle);
+            if (renderedFeaturedHandles && handle && renderedFeaturedHandles.has(handle)) return;
+
             if (typeof insertFeatured === "function") {
               insertFeatured(child);
             } else {
@@ -219,7 +228,6 @@ if (!customElements.get("infinite-scroll")) {
 
     const initialLimit = grid.children.length;
 
-    // Use current URL search params (filters/sort) to get the correct pagination chain for the current result set.
     const firstUrl = buildSectionUrlFromCurrentSearch();
     let firstDoc = null;
     if (firstUrl) {
@@ -233,7 +241,11 @@ if (!customElements.get("infinite-scroll")) {
     const featuredLis = [];
     featuredLis.push(...collectFeaturedLisFromGrid(grid, { importIntoDocument: false }));
 
-    const MAX_PREFETCH_PAGES = 50;
+    const params = new URLSearchParams(window.location.search || "");
+    const hasFilters = Array.from(params.keys()).some((k) => k.startsWith("filter."));
+    const hasSort = params.has("sort_by");
+    // Prefetching many pages on every filter/sort change is expensive; rely on badge-detection for later pages instead.
+    const MAX_PREFETCH_PAGES = hasFilters || hasSort ? 0 : 50;
     let pagesFetched = 0;
     let nextHref = firstDoc
       ? readNextPageHrefFromDoc(firstDoc)
@@ -270,7 +282,8 @@ if (!customElements.get("infinite-scroll")) {
       }
     }
 
-    state.allFeaturedPrefetched = true;
+    // "All featured prefetched" only when we actually paged until no next link.
+    state.allFeaturedPrefetched = MAX_PREFETCH_PAGES > 0 && !nextHref;
     state._hasRunOnce = true;
 
     printFeaturedSummary();
@@ -283,40 +296,21 @@ if (!customElements.get("infinite-scroll")) {
 
   function start() {
     state.ready = runFeaturedForCurrentUrl().catch((err) => {
-    console.error("Featured products fetch error:", err);
+      console.error("Featured products fetch error:", err);
 
-    const wrapper = document.querySelector('[data-product-grid][data-collection-handle]');
-    if (wrapper) {
-      wrapper.setAttribute("data-featured-state", "ready");
-      wrapper.removeAttribute("data-featured-fullscreen");
-    }
+      const wrapper = document.querySelector('[data-product-grid][data-collection-handle]');
+      if (wrapper) {
+        wrapper.setAttribute("data-featured-state", "ready");
+        wrapper.removeAttribute("data-featured-fullscreen");
+      }
     });
   }
 
   start();
 
   window.addEventListener("collection:product-grid:updated", () => {
-    const params = new URLSearchParams(window.location.search || "");
-    const hasFilters = Array.from(params.keys()).some((k) => k.startsWith("filter."));
-    const hasSort = params.has("sort_by");
-
-    // If the user cleared all filters/sort re-enable featured pinning.
-
-    if (!hasFilters && !hasSort) {
-      start();
-      return;
-    }
-
-    state.handles = new Set();
-    state.renderedHandles = new Set();
-    state.allFeaturedPrefetched = false;
-    state.ready = Promise.resolve();
-
-    const wrapper = document.querySelector('[data-product-grid][data-collection-handle]');
-    if (wrapper) {
-      wrapper.setAttribute("data-featured-state", "ready");
-      wrapper.removeAttribute("data-featured-fullscreen");
-    }
+    // Re-run pinning after the grid is replaced (e.g. after applying filters/sort).
+    start();
   });
 
   window.__collectionFeaturedState = state;

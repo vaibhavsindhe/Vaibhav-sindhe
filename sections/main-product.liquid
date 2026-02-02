@@ -668,6 +668,11 @@
           </a>
         </section>
       </div>
+
+      <div id="variantImage-{{section.id }}" class="varient-section">
+          <div><img src="{{ product.selected_or_first_available_variant.metafields.custom.image.value | image_url   }}"
+          height="400px" width="400px"></div>
+      </div> 
     </div>
 
     {% render 'product-media-modal', variant_images: variant_images %}
