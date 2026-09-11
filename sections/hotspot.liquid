@@ -1,0 +1,164 @@
+{%- style -%}
+  .padding-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  {% for block in section.blocks %}
+    .hotspot-icon.icon-{{ block.id }} {
+      top:{{ block.settings.hotspot_icon_position_top }}%;
+      left:{{ block.settings.hotspot_icon_position_left }}%;
+    }
+  {% endfor %}
+
+  @media screen and (min-width: 750px) {
+    .padding-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{{ 'product-hotspot.css' | asset_url | stylesheet_tag }}
+
+<section class="padding-{{ section.id }} page-width">
+  <hotspot-section data-auto-variant-id="{{ section.settings.auto_add_product.selected_or_first_available_variant.id }}">
+    {% if section.settings.heading != blank %}
+      <div class="hotspot-section-heading">{{ section.settings.heading }}</div>
+    {% endif %}
+    <div></div>
+    <div class="hotspot-wrapper">
+      {%- for block in section.blocks -%}
+        {% assign hotspot_image = block.settings.hotspot_product.featured_image %}
+        {% if block.settings.hotspot_image != blank %}
+          {% assign hotspot_image = block.settings.featured_image %}
+        {% endif %}
+        <div class="hotspot-block">
+          <img class="hotspot-image" src="{{ hotspot_image | image_url }}">
+          <span
+            class="hotspot-icon icon-{{ block.id }}"
+            data-product-handle="{{ block.settings.hotspot_product.handle }}"
+          >
+            {% render 'hotspot-icon' %}
+          </span>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="hotspot-card-popup-overlay hidden">
+      <div class="hotspot-card-popup">
+        <div class="hotspot-card-popup-content">
+          <div class="icon-loader">{% render 'icon-loader' %}</div>
+        </div>
+        <div class="hotspot-card-popup-close">{% render 'icon-cross' %}</div>
+      </div>
+    </div>
+  </hotspot-section>
+</section>
+<script src="{{ 'product-hotspot-.js' | asset_url}}" defer></script>
+{% schema %}
+{
+  "name": "Product Hotspot",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+    },
+    {
+      "type": "product",
+      "id": "auto_add_product",
+      "label": "Auto add Product ",
+      "info": "The mentioned product will be auto added when products Of Black and Medium variants are added to cart"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding top (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding bottom (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot-block",
+      "name": "Hotspot Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "hotspot_product",
+          "label": "Hotspot product"
+        },
+        {
+          "type": "image_picker",
+          "id": "hotspot_image",
+          "label": "Hotspot Image"
+        },
+        {
+          "type": "header",
+          "content": "Hotspot Icon Position"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_icon_position_top",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position From Top",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_icon_position_left",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position From Left",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Hotspot"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,137 @@
+{%- style -%}
+  .padding-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .custom-header-section {
+    background:{{ section.settings.background_color }}
+  }
+  .header-button {
+    background : {{ section.settings.button_background_color }}
+  }
+
+  @media screen and (min-width: 750px) {
+    .padding-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{{ 'custom-header.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-header-section padding-{{ section.id }}">
+  {% if section.settings.header_logo != blank %}
+    <div class="large-up-hide header-mobile">
+      <span class="icon-header-hamburger">{% render 'icon-hamburger ' %}</span>
+      <span class="icon-header-cross hidden">{% render 'icon-large-cross ' %}</span>
+      <span><img class="header-logo" src="{{ section.settings.header_logo | image_url }}"></span>
+    </div>
+  {% endif %}
+  <div class="custom-header">
+    {% if section.settings.header_logo != blank %}
+      <div class="small-hide medium-hide">
+        <img class="header-logo" src="{{ section.settings.header_logo | image_url }}">
+      </div>
+    {% endif %}
+    {% if section.settings.header_text != blank %}
+      <div class="header-text">{{ section.settings.header_text }}</div>
+    {% endif %}
+    {% if section.settings.button_link != blank and section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="header-button">
+        <span>{{ section.settings.button_label }}</span>
+        <span>{% render 'icon-arrow' %}</span>
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Custom Header",
+  "tag": "section",
+  "class": "section",
+  "limit": 1,
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Header Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_logo",
+      "label": "Header Logo"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Header Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Header Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding top (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding bottom (Mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Header"
+    }
+  ]
+}
+{% endschema %}

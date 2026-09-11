@@ -1,0 +1,77 @@
+{% layout none %}
+<div class="hotspot-product-card">
+  <div class="hpc_product-info">
+    <div class="hpc_product-image"><img src="{{ product.featured_image | image_url }}"></div>
+    <div>
+      <div class="hpc_product-title">{{ product.title }}</div>
+      <div class="hpc_product-price">{{ product.selected_or_first_available_variant.price | money_with_currency }}</div>
+      <div class="hpc_product-description">{{ product.description | strip_html }}</div>
+    </div>
+  </div>
+
+  <div class="hpc_product-variant">
+    <custom-variant-selector
+      data-variants='{{ product.variants | json }}'
+    >
+      <!-- Color Options -->
+      <div class="hpc_color-variant-wrapper">
+        <legend>Color</legend>
+        {% assign option_index = 1 %}
+        {% assign values = '' %}
+        <div class="hpc_color-variant">
+          <div class="variant-highlight"></div>
+          {% for variant in product.variants %}
+            {% assign value = variant.options[option_index] %}
+            {% unless values contains value %}
+              <label data-value="{{ value }}">
+                <input
+                  type="radio"
+                  name="option2"
+                  value="{{ value }}"
+                  class="hidden"
+                >
+                <span class="color-swatch" style="background: {{ value }}"></span>
+                {{ value }}
+              </label>
+              {% assign values = values | append: value | append: ',' %}
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Size Options -->
+      <details class="hpc_size-variant">
+        <summary>
+          <legend>Size: </legend>
+          <div class="selected-size">
+            <span class="selected-size-text">Choose your size</span>
+            <span class="selected-size-icon">{% render 'icon-caret' %}</span>
+          </div>
+        </summary>
+
+        <div class="variant-options">
+          {% assign option_index = 0 %}
+          {% assign values = '' %}
+          {% for variant in product.variants %}
+            {% assign value = variant.options[option_index] %}
+             {% assign tag = ',' | append: value | append: ',' %}
+            {% unless values contains tag %}
+              <label>
+                <input type="radio" name="option1" value="{{ value }}" class="hidden">
+                <span>{{ value }}</span>
+              </label>
+              {% assign values = values | append: tag %}
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </details>
+
+      <div class="hpc_atc-error-message">Please select the Variants</div>
+      <!-- Hidden field for Variant ID -->
+      <div data-selected-variant-id="" class="hpc_atc-button">
+        <span>Add To Cart</span>
+        <span>{% render 'icon-arrow' %}</span>
+      </div>
+    </custom-variant-selector>
+  </div>
+</div>
